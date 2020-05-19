@@ -18,10 +18,14 @@
         return actionArr[index];
     }
 
+    function userInput() {
+        let playerSelection = window.prompt("To play type: rock, paper, or scissors");
+        return playerSelection;
+    }
+
     function playRound(playerSelection, computerSelection) {
         // uniform the inputs
         playerSelection = playerSelection.toLowerCase();
-        computerSelection = computerSelection;
 
         // Player input ROCK
         if (playerSelection === "rock" && computerSelection === "rock") {
@@ -58,7 +62,7 @@
         let gamePlays = 5;
         for (let i = 0; i < gamePlays; i++) {
             let computerSelection = computerPlay();
-            let playerSelection = "rock";
+            let playerSelection = userInput();
             let results = playRound(playerSelection, computerSelection);
 
             if (results == playerSelection) {
@@ -81,13 +85,11 @@
             }
         }
 
-        if (playerWins.length >= 3) {
-            console.log("Player Wins this game with " + playerWins.length + " rounds won!");
-        }
-        if (computerWins.length >= 3) {
-            console.log("Computer Wins this game with " + computerWins.length + " rounds won!");
-        }
-        if (ties.length > 3 || (computerWins.length === playerWins.length)) {
+        if (playerWins.length > computerWins.length) {
+            console.log("Player Wins this game with " + playerWins.length + " rounds won! Computer wins: " + computerWins.length + ". Ties: " + ties.length);
+        } else if (computerWins.length > playerWins.length) {
+            console.log("Computer Wins this game with " + computerWins.length + " rounds won! Player wins: " + playerWins.length + ". Ties: " + ties.length);
+        } else {
             console.log("No winners this game with " + ties.length + " tie rounds, " + computerWins.length + " computer wins, and " + playerWins.length + " player wins");
         }
     }
