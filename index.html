@@ -8,97 +8,15 @@
 </head>
 
 <body>
-    <h1>Rock Paper Scissors - The Game</h1>
-    <p>Play in the console today!</p>
+    <div class="content">
+        <h1>Rock Paper Scissors - The Game</h1>
+        <p>Play in the console today!</p>
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
+        <div id="result">Results: </div>
+    </div>
 </body>
-<script>
-    function computerPlay() {
-        const actionArr = ["rock", "paper", "scissors"];
-        let index = Math.floor(Math.random() * actionArr.length);
-        return actionArr[index];
-    }
-
-    function userInput() {
-        let playerSelection = window.prompt("To play type: rock, paper, or scissors");
-        return playerSelection;
-    }
-
-    function playRound(playerSelection, computerSelection) {
-        // uniform the inputs
-        playerSelection = playerSelection.toLowerCase();
-
-        // Player input ROCK
-        if (playerSelection === "rock" && computerSelection === "rock") {
-            return "Tie";
-        } else if (playerSelection === "rock" && computerSelection === "paper") {
-            return computerSelection;
-        } else if (playerSelection === "rock" && computerSelection === "scissors") {
-            return playerSelection;
-        } else if (playerSelection === "paper" && computerSelection === "rock") {
-            return playerSelection;
-        } else if (playerSelection === "paper" && computerSelection === "scissors") {
-            return computerSelection;
-        } else if (playerSelection === "paper" && computerSelection === "paper") {
-            return "Tie";
-        } else if (playerSelection === "scissors" && computerSelection === "rock") {
-            return computerSelection;
-        } else if (playerSelection === "scissors" && computerSelection === "paper") {
-            return playerSelection;
-        } else if (playerSelection === "scissors" && computerSelection === "scissors") {
-            return "Tie";
-        } else {
-            return "Please select a valid input"
-        }
-
-    }
-
-
-
-
-    function game() {
-        let computerWins = [];
-        let playerWins = [];
-        let ties = [];
-        let gamePlays = 5;
-        for (let i = 0; i < gamePlays; i++) {
-            let computerSelection = computerPlay();
-            let playerSelection = userInput();
-            let results = playRound(playerSelection, computerSelection);
-
-            if (results == playerSelection) {
-                playerWins.push(playerSelection);
-                console.log(playerWins);
-                console.log("Player wins! This round the player selected " + playerSelection + " and the computer selected " + computerSelection);
-
-            }
-            if (results == computerSelection) {
-                computerWins.push(computerSelection);
-                console.log(computerWins);
-                console.log("You Lose! This round the player selected " + playerSelection + " and the computer selected " + computerSelection);
-
-            }
-            if (results == "Tie") {
-                ties.push("tie");
-                console.log(ties);
-                console.log("It's a tie! This round the player selected " + playerSelection + " and the computer selected " + computerSelection);
-
-            }
-        }
-
-        if (playerWins.length > computerWins.length) {
-            console.log("Player Wins this game with " + playerWins.length + " rounds won! Computer wins: " + computerWins.length + ". Ties: " + ties.length);
-        } else if (computerWins.length > playerWins.length) {
-            console.log("Computer Wins this game with " + computerWins.length + " rounds won! Player wins: " + playerWins.length + ". Ties: " + ties.length);
-        } else {
-            console.log("No winners this game with " + ties.length + " tie rounds, " + computerWins.length + " computer wins, and " + playerWins.length + " player wins");
-        }
-    }
-
-
-
-
-
-    game();
-</script>
+<script src="./script.js"></script>
 
 </html>
